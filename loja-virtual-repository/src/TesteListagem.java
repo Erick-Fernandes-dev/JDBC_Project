@@ -1,5 +1,4 @@
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -8,13 +7,15 @@ public class TesteListagem {
 	
 	public static void main(String [] args) throws SQLException {
 		
-		Connection con = DriverManager
-						.getConnection("jdbc:mysql://localhost/loja_virtual?userTimezone=true&serverTimezone=UTC", "root", "tbwa0002");
+		ConnectionFactory connectionFactory = new ConnectionFactory();
+		
+		Connection con = connectionFactory.recuperarConexao();
 		
 		System.out.println("Rodando...");
 		
 		
 		Statement stn = con.createStatement();
+		//LISTAR OS VALORES
 		stn.execute("SELECT ID, NOME, DESCRICAO FROM PRODUTO");
 		
 		ResultSet rst = stn.getResultSet();

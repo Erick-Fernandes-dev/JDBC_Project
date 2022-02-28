@@ -1,13 +1,13 @@
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class TesteConexao {
 	
 	public static void main(String [] args) throws SQLException {
+		//TESTE DE CONEX√O
+		ConnectionFactory connectionFactory = new ConnectionFactory();
 		
-		Connection connection = DriverManager
-								.getConnection("jdbc:mysql://localhost/loja_virtual?userTimezone=true&serverTimezone=UTC", "root", "tbwa0002");
+		Connection connection = connectionFactory.recuperarConexao();
 		
 		System.out.println("Fechando conex√£o...");
 
