@@ -10,10 +10,11 @@ public class TestaRemocao {
 		
 		Connection connection = factory.recuperaConexao();
 		
-		PreparedStatement stm = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID > 2");
+		// DELETAR
+		PreparedStatement stm = connection.prepareStatement("DELETE FROM PRODUTO WHERE ID > ?");
 		
 		//Statement stm = connection.createStatement();
-		// DELETAR
+		stm.setInt(1, 2);
 		stm.execute();
 		
 		Integer linhasModificdas = stm.getUpdateCount();
